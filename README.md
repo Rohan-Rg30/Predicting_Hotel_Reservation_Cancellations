@@ -28,18 +28,18 @@ Six models were benchmarked on a held-out, untouched 20% test set (**7,255 booki
 |---|---|---|---|---|---|
 | Logistic Regression | 0.7862 | 0.6446 | 0.7745 | 0.7036 | 0.8712 |
 | Decision Tree | 0.8622 | 0.7703 | 0.8254 | 0.7969 | 0.9292 |
-| **Random Forest** 🏆 | **0.9021** | **0.8591** | 0.8389 | **0.8489** | **0.9558** |
+| $\color{cyan}{\text{**Random Forest**}}$ 🏆 | **0.9021** | **0.8591** | 0.8389 | **0.8489** | **0.9558** |
 | Gradient Boosting | 0.8848 | 0.8305 | 0.8145 | 0.8224 | 0.9460 |
 | XGBoost | 0.8805 | 0.8175 | 0.8178 | 0.8177 | 0.9448 |
 | AdaBoost | 0.7989 | 0.6559 | 0.8124 | 0.7258 | 0.8783 |
 
-**🏆 Best model: Random Forest** — 90.2% accuracy and 0.956 AUC on unseen data.
+**🏆 Best model:** $\color{cyan}{\text{**Random Forest**}}$ — 90.2% accuracy and 0.956 AUC on unseen data.
 
 After `GridSearchCV` hyperparameter tuning (5-fold stratified CV, scored on ROC-AUC):
 
 | Model | Best CV AUC | Best Parameters |
 |---|---|---|
-| Random Forest | **0.9812** | `n_estimators=500, max_depth=None, min_samples_leaf=1, class_weight='balanced'` |
+| $\color{cyan}{\text{**Random Forest**}}$ | **0.9812** | `n_estimators=500, max_depth=None, min_samples_leaf=1, class_weight='balanced'` |
 | XGBoost | 0.9803 | `n_estimators=300, learning_rate=0.1, max_depth=7, subsample=0.8, colsample_bytree=1.0` |
 | Gradient Boosting | 0.9792 | `n_estimators=300, learning_rate=0.1, max_depth=6, subsample=0.8` |
 | Logistic Regression | 0.8703 | `C=10, penalty='l2', solver='lbfgs'` |
@@ -99,22 +99,20 @@ After `GridSearchCV` hyperparameter tuning (5-fold stratified CV, scored on ROC-
 ```
 .
 ├── Predicting_Hotel_Reservation_Cancellations.ipynb   # Full pipeline notebook
-├── Hotel Reservations.csv                             # Dataset (add locally or via Kaggle)
 ├── README.md                                           # Project documentation
 └── requirements.txt                                    # Python dependencies
 ```
 
 ---
 
-## 🚀 Setup & Usage
+## 🚀 Google Colab
 
-### Option 1 — Run in Google Colab (recommended, zero setup)
+###  1 — Run in Google Colab (recommended, zero setup)
 
-1. Click the **"Open In Colab"** badge at the top of this README.
-2. Upload `Hotel Reservations.csv` to the Colab session (`/content/`), or mount Google Drive.
-3. Run all cells top to bottom (**Runtime → Run all**).
+• Click the **"Open In Colab"** badge at the top of this README.
 
-### Option 2 — Run locally
+
+###  2 — Run locally
 
 ```bash
 # 1. Clone the repository
@@ -131,8 +129,6 @@ pip install -r requirements.txt
 # 4. Launch Jupyter
 jupyter notebook Predicting_Hotel_Reservation_Cancellations.ipynb
 ```
-
-Make sure `Hotel Reservations.csv` is in the same directory as the notebook (or update the `pd.read_csv(...)` path in the "Load Dataset" cell).
 
 ---
 
