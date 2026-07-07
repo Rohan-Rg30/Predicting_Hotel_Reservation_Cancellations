@@ -194,12 +194,12 @@ Contributions, issues, and feature requests are welcome. Feel free to check the 
 
 ## 📜 License
 
-This project is licensed under the [MIT License](LICENSE).
+**© Spinnaker Analytics**. All rights reserved.
+This project was assigned as part of an on-the-job training program at Spinnaker Analytics and is the property of Spinnaker Analytics. It is shared publicly on GitHub for portfolio/demonstration purposes only. No part of this code, dataset pipeline, or documentation may be copied, redistributed, or used commercially without written permission from Spinnaker Analytics.
 
-## 🙋 Author
-
-**Your Name** — [GitHub](https://github.com/YOUR_USERNAME) · [LinkedIn](https://linkedin.com)
-
+🙋 Author
+Rohan Gaikwad — Data Scientist (On-Job Trainee) at Spinnaker Analytics
+GitHub · LinkedIn
+Project completed as part of a 6-month Data Science training program at Spinnaker Analytics.
 ---
-
 <p align="center">⭐ If you found this project useful, consider giving it a star!</p>
