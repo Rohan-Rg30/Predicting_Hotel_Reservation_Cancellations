@@ -96,7 +96,8 @@ After `GridSearchCV` hyperparameter tuning (5-fold stratified CV, scored on ROC-
 
 ```
 .
-├── Predicting_Hotel_Reservation_Cancellations.ipynb   # Full pipeline notebook
+├──Notebook                                             # Full pipeline Notebook
+| └──Predicting_Hotel_Reservation_Cancellations.ipynb   # Jupyter Notebook
 └── README.md                                           # Project documentation
 ```
 
