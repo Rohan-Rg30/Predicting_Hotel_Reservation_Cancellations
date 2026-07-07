@@ -176,7 +176,7 @@ This project was assigned as part of an on-the-job training program at Spinnaker
 
 **Rohan Gaikwad — Data Scientist**
 
-LinkedIn — (https://www.linkedin.com/in/rohan-gaikwad-8b1976418)
+[LinkedIn](https://www.linkedin.com/in/rohan-gaikwad-8b1976418)
 
 Project completed as part of a 6-month Data Science training program at **Spinnaker Analytics**.
 
