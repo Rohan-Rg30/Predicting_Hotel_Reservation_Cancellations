@@ -76,8 +76,6 @@ After `GridSearchCV` hyperparameter tuning (5-fold stratified CV, scored on ROC-
 - **Guest history:** `repeated_guest`, `no_of_previous_cancellations`, `no_of_previous_bookings_not_canceled`
 - **Pricing:** `avg_price_per_room`
 
-> Place `Hotel Reservations.csv` in the working directory (or Colab's `/content/`) before running the notebook — see [Setup](#-setup--usage) below.
-
 ---
 
 ## 🛠️ Tech Stack
@@ -99,8 +97,7 @@ After `GridSearchCV` hyperparameter tuning (5-fold stratified CV, scored on ROC-
 ```
 .
 ├── Predicting_Hotel_Reservation_Cancellations.ipynb   # Full pipeline notebook
-├── README.md                                           # Project documentation
-└── requirements.txt                                    # Python dependencies
+└── README.md                                           # Project documentation
 ```
 
 ---
@@ -116,33 +113,15 @@ After `GridSearchCV` hyperparameter tuning (5-fold stratified CV, scored on ROC-
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations
+cd Predicting_Hotel_Reservation_Cancellations
 
 # 2. Create a virtual environment (recommended)
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Launch Jupyter
+# 3. Launch Jupyter
 jupyter notebook Predicting_Hotel_Reservation_Cancellations.ipynb
-```
-
----
-
-## 📦 requirements.txt
-
-```
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
-xgboost
-imbalanced-learn
-shap
 ```
 
 ---
