@@ -165,7 +165,7 @@ jupyter notebook Predicting_Hotel_Reservation_Cancellations.ipynb
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome. Feel free to check the [issues page][(https://github.com/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/issues)] or open a pull request.
+Contributions, issues, and feature requests are welcome. Feel free to check the [issues page](https://github.com/Rohan_Rg30/Predicting_Hotel_Reservation_Cancellations/issues) or open a pull request.
 
 ## 📜 License
 
