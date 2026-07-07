@@ -1,0 +1,11 @@
+# Block Jupyter Notebook temporary checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Block local Python cache files
+__pycache__/
+*.pyc
+
+# Block massive data files (Keep your GitHub light! Recruiters don't want raw CSVs)
+*.csv
+*.xlsx
