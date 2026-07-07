@@ -4,11 +4,11 @@ Predict whether a hotel booking will be **cancelled** before it happens — usin
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/blob/main/Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb)
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikitlearn)
-![XGBoost](https://img.shields.io/badge/XGBoost-boosting-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
-![Status](https://img.shields.io/badge/status-active-success)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikitlearn)](https://scikit-learn.org/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-boosting-green)](https://xgboost.readthedocs.io/)
+![License](https://img.shields.io/badge/License-Proprietary-lightgrey)
+[![Status](https://img.shields.io/badge/status-active-success)](https://github.com/Rg30/Predicting_Hotel_Reservation_Cancellations)
 
 ---
 
