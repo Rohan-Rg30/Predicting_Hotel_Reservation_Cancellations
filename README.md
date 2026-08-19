@@ -175,11 +175,7 @@ This project was assigned as part of an on-the-job training program at Spinnaker
 
 ## 🙋 Author
 
-**Rohan Gaikwad — Data Scientist**
-
-[LinkedIn](https://www.linkedin.com/in/rohan-gaikwad-8b1976418)
-
-Project completed as part of a 6-month Data Science training program at **Spinnaker Analytics**.
+**Rohan Gaikwad — Data Scientist** - [LinkedIn](https://www.linkedin.com/in/rohan-gaikwad-8b1976418)
 
 ---
 <p align="center">⭐ If you found this project useful, consider giving it a star!</p>
