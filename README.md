@@ -171,7 +171,7 @@ Contributions, issues, and feature requests are welcome. Feel free to check the 
 ## 📜 License
 
 **© Spinnaker Analytics**. All rights reserved.
-This project was assigned as part of an on-the-job training program at Spinnaker Analytics and is the property of Spinnaker Analytics. It is shared publicly on GitHub for portfolio/demonstration purposes only. No part of this code, dataset pipeline, or documentation may be copied, redistributed, or used commercially without written permission from Spinnaker Analytics.
+This project was assigned by Spinnaker Analytics and is the property of Spinnaker Analytics. It is shared publicly on GitHub for portfolio/demonstration purposes only. No part of this code, dataset pipeline, or documentation may be copied, redistributed, or used commercially without written permission from Spinnaker Analytics.
 
 ## 🙋 Author
 
