@@ -1,195 +1,152 @@
 <div align="center">
 
-# 🏨 Predicting Hotel Reservation Cancellations
+<img src="./assets/hotel-cancellation-banner.svg" alt="Predicting Hotel Reservation Cancellations banner" width="100%" />
 
-### Turning booking behavior into smarter hotel operations
+# Predicting Hotel Reservation Cancellations
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Jupyter](https://img.shields.io/badge/Notebook-Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
-[![scikit--learn](https://img.shields.io/badge/ML-scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![XGBoost](https://img.shields.io/badge/Model-XGBoost-189FDD?style=for-the-badge)](https://xgboost.readthedocs.io/)
-[![SHAP](https://img.shields.io/badge/Explainability-SHAP-8A2BE2?style=for-the-badge)](https://shap.readthedocs.io/)
+**A practical machine learning project for identifying cancellation risk before check-in.**
 
-**An end-to-end machine learning project that predicts whether a hotel booking is likely to be canceled — and explains why.**
-
-[Explore the notebook](./Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb) · [Open in Colab](https://colab.research.google.com/github/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/blob/main/Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb) · [Report an issue](https://github.com/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/issues)
+[![Open Notebook](https://img.shields.io/badge/OPEN_NOTEBOOK-18181B?style=for-the-badge&logo=jupyter&logoColor=F97316)](./Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb)
+[![Run in Colab](https://img.shields.io/badge/RUN_IN_COLAB-F97316?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/blob/main/Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb)
+[![View on GitHub](https://img.shields.io/badge/GITHUB-18181B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations)
 
 </div>
 
 ---
 
-## Why this project matters
+## The idea
 
-Hotel cancellations create empty rooms, unstable revenue forecasts, and avoidable operational friction. This project uses reservation-level data to estimate cancellation risk before arrival so a hotel team can prioritize follow-ups, improve inventory planning, and make more informed revenue decisions.
+Cancellations leave hotels with empty rooms, uncertain revenue, and less time to react. This project turns reservation details into a **cancellation-risk prediction** that can support smarter follow-ups, inventory planning, and revenue decisions.
 
-The repository contains a complete notebook workflow: data exploration, preprocessing, imbalance handling, baseline benchmarking, hyperparameter tuning, validation checks, SHAP explainability, and an interactive prediction function for new reservations.
+It is built as a complete, explainable notebook—not just a model training script.
 
-> **Project goal:** build a useful, interpretable cancellation-risk signal — not just a high score on a leaderboard.
+## Project snapshot
 
-## At a glance
+| 36,275 | 19 | 6 | 90.21% | 0.9558 |
+|:---:|:---:|:---:|:---:|:---:|
+| reservations | columns | models benchmarked | test accuracy | test ROC-AUC |
 
-| Item | Detail |
-| --- | --- |
-| **Task** | Binary classification: `Canceled` vs `Not_Canceled` |
-| **Dataset** | 36,275 hotel reservations and 19 columns |
-| **Best baseline in the notebook** | Tuned Random Forest |
-| **Baseline test accuracy** | **90.21%** |
-| **Baseline test ROC-AUC** | **0.9558** |
-| **Validation** | Stratified 80/20 split, 5-fold cross-validation, and model comparison |
-| **Interpretability** | SHAP feature-impact analysis |
-| **Primary artifact** | [Jupyter notebook](./Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb) |
+<br />
 
-> **Metric context:** the figures above are from the notebook’s baseline model comparison on the held-out test split. The notebook later tunes several models using cross-validated ROC-AUC.
+<div align="center">
 
-## Results snapshot
+### What makes it portfolio-ready
 
-The initial benchmark compares six classifiers after preprocessing and training-set resampling with SMOTETomek.
+`EDA` &nbsp;→&nbsp; `Leakage-aware preprocessing` &nbsp;→&nbsp; `SMOTETomek` &nbsp;→&nbsp; `Model comparison` &nbsp;→&nbsp; `GridSearchCV` &nbsp;→&nbsp; `SHAP` &nbsp;→&nbsp; `Live prediction function`
 
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Logistic Regression | 78.62% | 64.46% | 77.45% | 70.36% | 0.8712 |
-| Decision Tree | 86.22% | 77.03% | 82.54% | 79.69% | 0.9292 |
-| **Random Forest** | **90.21%** | **85.91%** | **83.89%** | **84.89%** | **0.9558** |
-| Gradient Boosting | 88.48% | 83.05% | 81.45% | 82.24% | 0.9460 |
-| XGBoost | 88.05% | 81.75% | 81.78% | 81.77% | 0.9448 |
-| AdaBoost | 79.89% | 65.59% | 81.24% | 72.58% | 0.8783 |
+</div>
 
-The tuned cross-validation audit reports a mean ROC-AUC of **0.9812** for Random Forest, **0.9803** for XGBoost, and **0.9792** for Gradient Boosting. These values are useful for model selection, while the held-out test metrics above remain the clearest snapshot of the notebook’s baseline performance.
+## Results
 
-## What the pipeline does
+The benchmark uses a stratified 80/20 split. Preprocessing and resampling are fitted on the training partition, while the test partition remains untouched.
+
+| Model | Accuracy | F1 | ROC-AUC |
+|:--|--:|--:|--:|
+| **Random Forest** | **90.21%** | **84.89%** | **0.9558** |
+| Gradient Boosting | 88.48% | 82.24% | 0.9460 |
+| XGBoost | 88.05% | 81.77% | 0.9448 |
+| Decision Tree | 86.22% | 79.69% | 0.9292 |
+| AdaBoost | 79.89% | 72.58% | 0.8783 |
+| Logistic Regression | 78.62% | 70.36% | 0.8712 |
+
+> **Best baseline:** Random Forest. After tuning, its cross-validated ROC-AUC reached **0.9812**.
+
+## How it works
 
 ```mermaid
 flowchart LR
-    A[Reservation data] --> B[EDA & quality checks]
-    B --> C[Feature selection]
-    C --> D[Train/test split]
-    D --> E[Encode categorical features]
-    E --> F[Scale numeric features]
-    F --> G[SMOTETomek on training data only]
-    G --> H[Train six classifiers]
-    H --> I[Compare metrics]
-    I --> J[GridSearchCV tuning]
-    J --> K[SHAP explanations]
-    K --> L[Interactive cancellation prediction]
+    A[Booking data] --> B[Explore]
+    B --> C[Split]
+    C --> D[Encode + scale]
+    D --> E[SMOTETomek]
+    E --> F[Train models]
+    F --> G[Tune]
+    G --> H[Explain with SHAP]
+    H --> I[Predict cancellation risk]
 ```
 
-### Modeling decisions
+## Signals the model learns from
 
-- **Leakage-aware preprocessing:** the encoder and scaler are fitted on the training partition, then applied to the test partition.
-- **Imbalance handling:** SMOTETomek is applied to the training data only. The test distribution remains untouched.
-- **Model diversity:** the notebook benchmarks linear, tree-based, boosting, and gradient-boosting approaches.
-- **Tuning:** selected models are optimized with `GridSearchCV` using ROC-AUC as the search metric.
-- **Explainability:** SHAP is used to inspect which reservation attributes influence the tuned Random Forest’s output.
+- **Lead time** — the gap between booking and arrival.
+- **Market segment** — online, corporate, offline, aviation, or complementary.
+- **Guest history** — repeat-guest behavior and previous booking outcomes.
+- **Special requests** — a useful signal of booking intent in this dataset.
+- **Stay and pricing details** — nights, guests, room type, meal plan, price, and parking.
 
-## Dataset and features
+These are associations found in this dataset, not universal hotel rules. Any production use should be validated against a hotel’s own booking history.
 
-The project uses the [Hotel Reservations Dataset on Kaggle](https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset). The raw dataset is not committed to this repository.
+<details>
+<summary><strong>Technical details</strong></summary>
 
-The target is `booking_status`, mapped as:
+### Dataset
 
-- `Canceled` → `1`
-- `Not_Canceled` → `0`
+Source: [Hotel Reservations Dataset on Kaggle](https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset)
 
-The model uses information available at booking time, including:
+- **Target:** `booking_status` → `Canceled` / `Not_Canceled`
+- **Rows:** 36,275
+- **Columns:** 19, including 18 features and the target
+- **Raw CSV:** not stored in this repository
 
-| Feature group | Examples |
-| --- | --- |
-| **Stay details** | Adults, children, weekend nights, week nights, meal plan, room type, parking requirement |
-| **Booking behavior** | Lead time, arrival year/month/date, market segment, special requests |
-| **Guest history** | Repeated guest flag, previous cancellations, previous bookings not canceled |
-| **Pricing** | Average price per room |
+### Models
 
-## Quick start
+The notebook compares Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, XGBoost, and AdaBoost using accuracy, precision, recall, F1, and ROC-AUC.
 
-### Option 1: Google Colab
+### Explainability
 
-The fastest route is to open the notebook in Colab:
+SHAP is used with the tuned Random Forest to show which reservation features push the prediction toward cancellation or non-cancellation.
 
-[![Open in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/blob/main/Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb)
+### Interactive prediction
 
-Run the notebook cells from top to bottom. The notebook includes the installation/import section, exploratory analysis, training workflow, evaluation, explainability, and interactive prediction system.
+The notebook includes `predict_custom_reservation()`, a CLI-style function that accepts a hypothetical reservation and returns a cancellation prediction with a probability score.
 
-### Option 2: Run locally
+</details>
+
+<details>
+<summary><strong>Validation note</strong></summary>
+
+The notebook includes a leakage audit and confirms that the encoder, scaler, and SMOTETomek workflow are fit without using test labels. It also detects **33,881 exact duplicate feature rows shared between the train and test partitions**.
+
+This means a random split may produce an optimistic estimate because identical rows can appear on both sides. The reported metrics are useful project benchmarks, but they should not be treated as production guarantees.
+
+**Next step:** deduplicate the source data and evaluate with a time-based split that trains on earlier bookings and tests on later bookings.
+
+</details>
+
+## Run it locally
 
 ```bash
 git clone https://github.com/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations.git
 cd Predicting_Hotel_Reservation_Cancellations
 
 python -m venv .venv
-
-# macOS/Linux
-source .venv/bin/activate
-
-# Windows PowerShell
-# .venv\Scripts\Activate.ps1
+source .venv/bin/activate          # macOS/Linux
+# .venv\Scripts\Activate.ps1     # Windows PowerShell
 
 pip install jupyter pandas numpy matplotlib seaborn scikit-learn xgboost imbalanced-learn shap
 jupyter notebook Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb
 ```
 
-## Notebook tour
+Or skip setup and [run the notebook in Google Colab](https://colab.research.google.com/github/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/blob/main/Notebook/Predicting_Hotel_Reservation_Cancellations.ipynb).
 
-| Stage | What you will find |
-| --- | --- |
-| **1. Setup** | Imports, reproducibility settings, plotting style, and dataset loading |
-| **2. Exploration** | Target balance, booking patterns, segment comparisons, pricing, and correlations |
-| **3. Preparation** | Feature selection, categorical encoding, scaling, and stratified splitting |
-| **4. Resampling** | SMOTETomek applied only to the training partition |
-| **5. Benchmarking** | Six classifiers evaluated with accuracy, precision, recall, F1, and ROC-AUC |
-| **6. Validation** | Cross-validation, confusion matrices, ROC curves, and overfitting checks |
-| **7. Tuning** | Grid search for Logistic Regression, Random Forest, Gradient Boosting, and XGBoost |
-| **8. Explainability** | SHAP plots for the tuned Random Forest |
-| **9. Prediction tool** | `predict_custom_reservation()` for scoring a hypothetical new booking |
-
-## Business takeaways from the analysis
-
-The notebook’s exploratory analysis and feature-impact work point to several practical patterns:
-
-- **Lead time** is strongly associated with cancellation risk. Longer gaps between booking and arrival deserve closer attention.
-- **Market segment** matters. Online bookings show different cancellation behavior from corporate and offline bookings.
-- **Special requests** can act as an intent signal. More requests are associated with a lower cancellation tendency in this dataset.
-- **Guest history** helps separate repeat, reliable guests from higher-risk reservation patterns.
-- **Price and parking requirements** contribute additional signal in the model’s SHAP analysis.
-
-These are dataset-level associations, not universal hotel rules. They should be revalidated against a hotel’s own booking history before being used operationally.
-
-## Important validation note
-
-The notebook includes an explicit leakage and validation audit. It confirms that the encoder, scaler, and SMOTETomek workflow are fit without using test labels. However, the audit also detects **33,881 exact duplicate feature rows shared between the train and test partitions** in the source dataset.
-
-That matters because random splitting can place identical reservations in both partitions and make performance look more optimistic than a truly de-duplicated or time-based evaluation. The reported scores should therefore be treated as a strong project benchmark, not as a production guarantee.
-
-### Recommended next validation step
-
-Before deploying this model, deduplicate the source data and evaluate with a time-aware split that mirrors the real decision: train on earlier reservations and test on later reservations. Then calibrate the probability threshold according to the hotel’s relative cost of a false alarm versus a missed cancellation.
-
-## Repository structure
+## Repository
 
 ```text
-Predicting_Hotel_Reservation_Cancellations/
+├── assets/
+│   └── hotel-cancellation-banner.svg
 ├── Notebook/
 │   └── Predicting_Hotel_Reservation_Cancellations.ipynb
 ├── .gitignore
 └── README.md
 ```
 
-## Roadmap
+## Next up
 
-- [ ] Add a cleaned, reproducible data-ingestion step
-- [ ] Evaluate a de-duplicated dataset with time-based validation
-- [ ] Calibrate cancellation probabilities for operational use
-- [ ] Expose the model through a FastAPI endpoint
+- [ ] De-duplicate the source data and add time-based validation
+- [ ] Calibrate the cancellation probability threshold
 - [ ] Build a Streamlit dashboard for hotel teams
-- [ ] Add holiday, seasonality, and event features
-- [ ] Track drift and retrain as booking behavior changes
-
-## Contributing
-
-Ideas, improvements, and issue reports are welcome. If you spot a reproducibility problem or have a stronger validation approach, open an [issue](https://github.com/Rohan-Rg30/Predicting_Hotel_Reservation_Cancellations/issues) or submit a pull request with a clear explanation of the change.
-
-## License and usage
-
-This project was created for portfolio and demonstration purposes as part of work associated with **Spinnaker Analytics**. The repository is shared publicly under the project owner’s stated usage terms. Please contact the owner before redistributing the code, dataset pipeline, or documentation for commercial use.
+- [ ] Deploy the model through FastAPI
+- [ ] Add seasonality, holidays, and event features
+- [ ] Monitor drift as booking behavior changes
 
 ## Author
 
@@ -199,18 +156,15 @@ This project was created for portfolio and demonstration purposes as part of wor
 
 <div align="center">
 
-### If this project helped you, consider leaving a ⭐
+---
+
+**If you find this useful, a ⭐ on the repository is appreciated.**
 
 </div>
 
----
-
-<details>
-<summary><strong>References</strong></summary>
+### References
 
 [1]: https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset "Hotel Reservations Dataset"
 [2]: https://scikit-learn.org/stable/ "scikit-learn documentation"
 [3]: https://imbalanced-learn.org/stable/ "imbalanced-learn documentation"
 [4]: https://shap.readthedocs.io/en/latest/ "SHAP documentation"
-
-</details>
