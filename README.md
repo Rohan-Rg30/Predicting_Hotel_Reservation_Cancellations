@@ -168,3 +168,19 @@ Or skip setup and [run the notebook in Google Colab](https://colab.research.goog
 [2]: https://scikit-learn.org/stable/ "scikit-learn documentation"
 [3]: https://imbalanced-learn.org/stable/ "imbalanced-learn documentation"
 [4]: https://shap.readthedocs.io/en/latest/ "SHAP documentation"
+
+
+## StayPredict AI Streamlit landing page
+
+The repository now includes a premium Streamlit experience in `app.py`. The landing page is the default view and includes the hero, risk visualization, project insights, model metrics, and a predictor section.
+
+Run it locally:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The app will show an attractive **Model not connected yet** state until a compatible serialized pipeline is placed at `model/model.pkl`. This avoids fabricating predictions while keeping the landing page and product experience fully available.
+
+For Streamlit Community Cloud, select this repository, set the main file to `app.py`, and deploy with `requirements.txt`.
