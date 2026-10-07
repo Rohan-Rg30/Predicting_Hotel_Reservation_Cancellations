@@ -19,9 +19,8 @@ if "theme" not in st.session_state:
 
 theme_col, toggle_col = st.columns([8, 1])
 with toggle_col:
-    if st.button("☀ Light mode" if st.session_state.theme == "dark" else "◐ Dark mode", key="theme_toggle"):
-        st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
-        st.rerun()
+    light_mode = st.toggle("Light mode", value=st.session_state.theme == "light", key="light_mode")
+    st.session_state.theme = "light" if light_mode else "dark"
 
 is_light = st.session_state.theme == "light"
 
@@ -156,11 +155,11 @@ div[data-baseweb="input"] > div, div[data-baseweb="select"] > div { background:r
     unsafe_allow_html=True,
 )
 
-mode_bg = "#f8fafc" if is_light else "#070912"
+mode_bg = "#ffffff" if is_light else "#070912"
 mode_ink = "#101827" if is_light else "#f6f7fb"
 mode_muted = "#64748b" if is_light else "#9aa4b8"
-mode_surface = "rgba(255,255,255,.82)" if is_light else "rgba(16,19,32,.72)"
-mode_surface_2 = "#eef2f7" if is_light else "rgba(25,29,48,.7)"
+mode_surface = "rgba(255,255,255,.96)" if is_light else "rgba(16,19,32,.72)"
+mode_surface_2 = "#f5f7fb" if is_light else "rgba(25,29,48,.7)"
 mode_line = "rgba(15,23,42,.14)" if is_light else "rgba(255,255,255,.10)"
 mode_accent = "#7457e8" if is_light else "#9d7aff"
 mode_cyan = "#087ea4" if is_light else "#59d9ff"
@@ -171,8 +170,8 @@ st.markdown(
 /* Cinematic lightweight AI SaaS treatment */
 .stApp {{ background:{mode_bg}; color:{mode_ink}; font-family:'Manrope',sans-serif; overflow-x:hidden; }}
 .stApp:before {{ opacity:.18; background-image:linear-gradient({mode_line} 1px,transparent 1px),linear-gradient(90deg,{mode_line} 1px,transparent 1px); background-size:72px 72px; mask-image:linear-gradient(to bottom,black,transparent 72%); }}
-.block-container {{ max-width:1240px; padding-top:1.2rem; }}
-.navbar {{ position:sticky; top:12px; z-index:10; border:0; border-radius:0; margin-bottom:70px; padding:12px 0; background:transparent; backdrop-filter:none; box-shadow:none; }}
+.block-container {{ max-width:none; width:100%; padding:0.35rem 4.2vw 5rem; }}
+.navbar {{ position:sticky; top:12px; margin-top:-28px; z-index:10; border:0; border-radius:0; margin-bottom:70px; padding:12px 0; background:transparent; backdrop-filter:none; box-shadow:none; }}
 .brand {{ color:{mode_ink}; }} .brand small {{ color:{mode_muted}; }} .logo {{ border:1px solid {mode_accent}; background:linear-gradient(145deg,rgba(157,122,255,.25),rgba(89,217,255,.12)); color:{mode_ink}; box-shadow:0 0 24px rgba(157,122,255,.22); }}
 .navlinks a {{ color:{mode_muted}; }} .navlinks a:hover {{ color:{mode_ink}; }} .navcta,.primary-link {{ color:#080911 !important; border-radius:999px; background:linear-gradient(100deg,#b8a2ff,#68dcff); box-shadow:0 8px 28px rgba(112,157,255,.25); }}
 .hero {{ padding:18px 0 72px; }} .hero h1 {{ max-width:750px; color:{mode_ink}; font-size:clamp(3.3rem,7vw,6.7rem); line-height:.96; letter-spacing:-.075em; font-weight:800; }} .gradient-text {{ background:linear-gradient(100deg,{mode_ink} 10%,{mode_accent} 56%,{mode_cyan} 100%); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:180% auto; animation:gradientMove 5s ease-in-out infinite; }} .hero p {{ color:{mode_muted}; }} .secondary-link {{ color:{mode_ink}; }} .secondary-link:after {{ color:{mode_accent}; }}
@@ -181,7 +180,7 @@ st.markdown(
 .stats {{ border:0; background:transparent; }} .stat {{ background:transparent; border-right:1px solid {mode_line}; }} .stat strong {{ color:{mode_ink}; }} .stat span {{ color:{mode_muted}; }} .marquee {{ border-color:{mode_line}; background:{mode_surface_2}; }} .marquee-item {{ color:{mode_muted}; }} .marquee-item b {{ color:{mode_accent}; }}
 .section {{ padding:112px 0 20px; }} .section:before {{ background:linear-gradient(90deg,transparent,{mode_line},transparent); }} .section-kicker {{ color:{mode_accent}; }} .section h2 {{ color:{mode_ink}; font-size:clamp(2.25rem,4vw,4rem); }} .section-lead {{ color:{mode_muted}; }}
 .panel {{ border:0; border-top:1px solid {mode_line}; border-radius:0; background:transparent; box-shadow:none; padding:28px 0; }} .panel:hover {{ transform:translateY(-5px); border-color:{mode_accent}; box-shadow:none; }} .panel h3 {{ color:{mode_ink}; }} .panel p {{ color:{mode_muted}; }} .icon-box {{ border:0; border-radius:0; color:{mode_accent}; background:transparent; padding:0; width:auto; height:auto; place-items:start; }} .flow-step {{ border:0; border-bottom:1px solid {mode_line}; border-radius:0; background:transparent; }} .flow-step b {{ color:{mode_ink}; }} .flow-step span,.flow-arrow {{ color:{mode_accent}; }} .model-stat {{ border:0; border-left:1px solid {mode_line}; border-radius:0; background:transparent; }} .model-stat small {{ color:{mode_muted}; }} .model-stat strong {{ color:{mode_ink}; }} .footer {{ border-color:{mode_line}; color:{mode_muted}; }}
-.stButton > button {{ border-radius:999px; border:1px solid rgba(157,122,255,.35); background:linear-gradient(100deg,#b8a2ff,#68dcff); color:#080911; box-shadow:0 8px 28px rgba(112,157,255,.2); font-weight:800; }}
+.stCheckbox {{ position:fixed; top:20px; right:4.2vw; z-index:40; padding:8px 14px; border:1px solid rgba(157,122,255,.35); border-radius:999px; background:linear-gradient(100deg,#b8a2ff,#68dcff); box-shadow:0 8px 28px rgba(112,157,255,.2); }} .stCheckbox label {{ color:#080911 !important; font-weight:800; }} .stButton > button {{ border-radius:999px; border:1px solid rgba(157,122,255,.35); background:linear-gradient(100deg,#b8a2ff,#68dcff); color:#080911; box-shadow:0 8px 28px rgba(112,157,255,.2); font-weight:800; }}
 .intro-overlay {{ position:fixed; inset:0; z-index:999; pointer-events:none; background:#070912; animation:introExit 1.8s cubic-bezier(.76,0,.24,1) forwards; }} .intro-mark {{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); color:#fff; text-align:center; font:800 1.1rem Manrope,sans-serif; letter-spacing:.12em; animation:introMark 1.15s ease forwards; }} .intro-mark small {{ display:block; margin-top:10px; color:#9d7aff; font:500 .6rem 'DM Mono',monospace; letter-spacing:.2em; }} .intro-line {{ position:absolute; left:10%; right:10%; top:54%; height:1px; background:linear-gradient(90deg,transparent,#59d9ff,#9d7aff,#ff71c8,transparent); transform:scaleX(0); transform-origin:left; animation:introLine 1s .2s ease forwards; box-shadow:0 0 18px #59d9ff; }}
 .orbit {{ position:absolute; border:1px solid rgba(157,122,255,.28); border-radius:50%; transform:rotate(-18deg); pointer-events:none; }} .orbit-a {{ width:455px; height:170px; animation:orbitSpin 12s linear infinite; }} .orbit-b {{ width:520px; height:245px; border-color:rgba(89,217,255,.2); transform:rotate(32deg); animation:orbitSpin 16s linear infinite reverse; }} .orbit:after {{ content:''; position:absolute; width:7px; height:7px; top:14%; left:18%; border-radius:50%; background:#59d9ff; box-shadow:0 0 16px #59d9ff; }}
 .data-transition {{ position:relative; min-height:210px; margin:45px 0 20px; padding:32px 0; overflow:hidden; border-top:1px solid {mode_line}; border-bottom:1px solid {mode_line}; border-radius:0; background:transparent; }} .data-transition h3 {{ margin:0; color:{mode_ink}; font-size:1.05rem; }} .data-transition p {{ margin:6px 0 22px; color:{mode_muted}; font-size:.78rem; }} .data-dots {{ display:flex; flex-wrap:wrap; gap:12px; max-width:760px; }} .data-dots i {{ width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,#59d9ff,#9d7aff); box-shadow:0 0 10px rgba(89,217,255,.55); animation:dotPop 2.8s ease-in-out infinite alternate; }} .data-dots i:nth-child(3n) {{ animation-delay:.7s; }} .data-dots i:nth-child(4n) {{ animation-delay:1.1s; }} .data-count {{ position:absolute; right:32px; top:50%; transform:translateY(-50%); color:{mode_ink}; font-size:3rem; font-weight:800; letter-spacing:-.08em; }} .data-count span {{ display:block; color:{mode_muted}; font:500 .62rem 'DM Mono',monospace; letter-spacing:.1em; text-align:right; }}
