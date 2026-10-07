@@ -14,6 +14,17 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+if "theme" not in st.session_state:
+    st.session_state.theme = "dark"
+
+theme_col, toggle_col = st.columns([8, 1])
+with toggle_col:
+    if st.button("☀ Light mode" if st.session_state.theme == "dark" else "◐ Dark mode", key="theme_toggle"):
+        st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
+        st.rerun()
+
+is_light = st.session_state.theme == "light"
+
 
 # -----------------------------
 # Theme and reusable UI helpers
@@ -140,6 +151,49 @@ div[data-testid="stForm"] { border:1px solid var(--line); border-radius:20px; ba
 .stButton > button { border-radius:999px; border:1px solid rgba(157,122,255,.35); background:linear-gradient(100deg,#b8a2ff,#68dcff); color:#080911; font-weight:800; }
 div[data-baseweb="input"] > div, div[data-baseweb="select"] > div { background:rgba(9,11,21,.75); border-color:var(--line); }
 @media (max-width: 800px) { .navlinks { display:none; } .navbar { margin-bottom:38px; } .hero { padding-top:10px; } .visual-wrap { min-height:390px; margin-top:22px; } .stats { grid-template-columns:repeat(2,1fr); } .flow { grid-template-columns:1fr; } .flow-arrow { transform:rotate(90deg); } .model-grid { grid-template-columns:repeat(2,1fr); } .section { padding-top:85px; } }
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
+mode_bg = "#f4efe6" if is_light else "#121515"
+mode_ink = "#1a2422" if is_light else "#f3f0e8"
+mode_muted = "#68716b" if is_light else "#a4aaa1"
+mode_surface = "rgba(255,252,246,.88)" if is_light else "#1b2020"
+mode_surface_2 = "#e8dfd1" if is_light else "#252c2b"
+mode_line = "rgba(26,36,34,.15)" if is_light else "rgba(243,240,232,.16)"
+mode_accent = "#d96245" if is_light else "#f27a55"
+mode_teal = "#227d72" if is_light else "#72c9b5"
+st.markdown(
+    f"""
+<style>
+/* Editorial hotel-operations redesign: intentionally replaces the original violet SaaS language. */
+.stApp {{ background: {mode_bg}; color: {mode_ink}; font-family: 'Manrope', sans-serif; }}
+.stApp:before {{ opacity: .08; background-image: linear-gradient({mode_line} 1px, transparent 1px), linear-gradient(90deg, {mode_line} 1px, transparent 1px); background-size: 46px 46px; mask-image: linear-gradient(to bottom, black, transparent 60%); }}
+.block-container {{ max-width: 1320px; padding-top: .5rem; }}
+.navbar {{ border: 0; border-bottom: 1px solid {mode_line}; border-radius: 0; margin-bottom: 72px; padding: 15px 0; background: transparent; box-shadow: none; backdrop-filter: none; }}
+.brand {{ color: {mode_ink}; font-size: 1.02rem; }} .brand small {{ color: {mode_muted}; }}
+.logo {{ border-radius: 4px; border: 1px solid {mode_ink}; background: {mode_accent}; color: #fff; box-shadow: none; }}
+.navlinks a {{ color: {mode_muted}; }} .navlinks a:hover {{ color: {mode_ink}; }}
+.navcta, .primary-link {{ border-radius: 5px; background: {mode_accent}; color: #fff !important; box-shadow: 3px 3px 0 {mode_ink}; }}
+.hero {{ padding: 0 0 76px; }} .hero:after {{ background: {mode_ink}; opacity:.3; }}
+.eyebrow {{ color: {mode_teal}; border: 0; border-radius: 0; padding: 0; background: transparent; font-weight:800; }} .eyebrow i {{ background: {mode_accent}; box-shadow:none; }}
+.hero h1 {{ max-width: 780px; color: {mode_ink}; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(3.5rem, 8vw, 8rem); line-height: .88; letter-spacing: -.085em; }}
+.gradient-text {{ background: none; color: {mode_accent}; }} .hero p {{ color: {mode_muted}; max-width: 490px; }}
+.secondary-link {{ color: {mode_ink}; }} .secondary-link:after {{ color: {mode_accent}; }}
+.scroll-cue {{ color: {mode_muted}; }} .scroll-cue span {{ border-color: {mode_ink}; }} .scroll-cue span:after {{ background: {mode_accent}; }}
+.visual-wrap {{ min-height: 500px; }} .visual-wrap:before {{ width: 315px; height: 315px; background: {mode_accent}; opacity:.20; box-shadow:none; filter:blur(22px); }} .visual-wrap:after {{ background:{mode_teal}; opacity:.18; box-shadow:none; filter:blur(25px); }}
+.risk-card {{ width:min(100%, 410px); border: 0; border-radius: 6px; background: {mode_surface}; color:{mode_ink}; box-shadow: 12px 12px 0 {mode_accent}; animation:floatCard 5s ease-in-out infinite; }}
+.risk-card:after {{ display:none; }} .card-top {{ color:{mode_muted}; }} .risk-number {{ color:{mode_ink}; font-family:Georgia,serif; }} .risk-label {{ color:{mode_accent}; }} .risk-line {{ background:linear-gradient(90deg,{mode_teal},{mode_accent}); }}
+.signal-row {{ color:{mode_muted}; }} .signal-row b {{ color:{mode_ink}; }} .signal-bar {{ background:{mode_surface_2}; }} .signal-bar span {{ background:{mode_teal}; }} .confidence {{ border-color:{mode_line}; color:{mode_muted}; }} .confidence strong {{ color:{mode_teal}; }}
+.float-chip {{ border:1px solid {mode_line}; border-radius:4px; background:{mode_surface}; color:{mode_ink}; box-shadow:4px 4px 0 {mode_ink}; }}
+.stats {{ border:1px solid {mode_line}; border-radius:0; background:{mode_line}; }} .stat {{ background:{mode_surface}; }} .stat strong {{ color:{mode_ink}; font-family:Georgia,serif; }} .stat span {{ color:{mode_muted}; }}
+.marquee {{ border-color:{mode_line}; background:{mode_surface_2}; }} .marquee-item {{ color:{mode_muted}; }} .marquee-item b {{ color:{mode_accent}; }}
+.section {{ padding-top:125px; }} .section:before {{ background:{mode_line}; }} .section-kicker {{ color:{mode_accent}; }} .section h2 {{ color:{mode_ink}; font-family:Georgia,serif; font-size:clamp(2.5rem,5vw,5rem); }} .section-lead {{ color:{mode_muted}; }}
+.panel {{ border:1px solid {mode_line}; border-radius:5px; background:{mode_surface}; box-shadow:5px 5px 0 {mode_line}; }} .panel:hover {{ transform:translateY(-5px); border-color:{mode_accent}; box-shadow:7px 7px 0 {mode_accent}; }} .panel h3 {{ color:{mode_ink}; }} .panel p {{ color:{mode_muted}; }} .icon-box {{ border-radius:4px; border-color:{mode_line}; color:{mode_accent}; background:{mode_surface_2}; }}
+.flow-step {{ border-radius:4px; border-color:{mode_line}; background:{mode_surface}; }} .flow-step b {{ color:{mode_ink}; }} .flow-step span, .flow-arrow {{ color:{mode_accent}; }}
+.model-stat {{ border-radius:4px; border-color:{mode_line}; background:{mode_surface}; }} .model-stat small {{ color:{mode_muted}; }} .model-stat strong {{ color:{mode_ink}; }} .footer {{ border-color:{mode_line}; color:{mode_muted}; }}
+.stButton > button {{ border-radius:4px; border:1px solid {mode_ink}; background:{mode_surface}; color:{mode_ink}; box-shadow:2px 2px 0 {mode_ink}; font-weight:800; }}
 </style>
 """,
     unsafe_allow_html=True,
