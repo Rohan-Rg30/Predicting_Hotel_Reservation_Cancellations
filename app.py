@@ -156,44 +156,36 @@ div[data-baseweb="input"] > div, div[data-baseweb="select"] > div { background:r
     unsafe_allow_html=True,
 )
 
-mode_bg = "#f4efe6" if is_light else "#121515"
-mode_ink = "#1a2422" if is_light else "#f3f0e8"
-mode_muted = "#68716b" if is_light else "#a4aaa1"
-mode_surface = "rgba(255,252,246,.88)" if is_light else "#1b2020"
-mode_surface_2 = "#e8dfd1" if is_light else "#252c2b"
-mode_line = "rgba(26,36,34,.15)" if is_light else "rgba(243,240,232,.16)"
-mode_accent = "#d96245" if is_light else "#f27a55"
-mode_teal = "#227d72" if is_light else "#72c9b5"
+mode_bg = "#f8fafc" if is_light else "#070912"
+mode_ink = "#101827" if is_light else "#f6f7fb"
+mode_muted = "#64748b" if is_light else "#9aa4b8"
+mode_surface = "rgba(255,255,255,.82)" if is_light else "rgba(16,19,32,.72)"
+mode_surface_2 = "#eef2f7" if is_light else "rgba(25,29,48,.7)"
+mode_line = "rgba(15,23,42,.14)" if is_light else "rgba(255,255,255,.10)"
+mode_accent = "#7457e8" if is_light else "#9d7aff"
+mode_cyan = "#087ea4" if is_light else "#59d9ff"
+mode_pink = "#d647a4" if is_light else "#ff71c8"
 st.markdown(
     f"""
 <style>
-/* Editorial hotel-operations redesign: intentionally replaces the original violet SaaS language. */
-.stApp {{ background: {mode_bg}; color: {mode_ink}; font-family: 'Manrope', sans-serif; }}
-.stApp:before {{ opacity: .08; background-image: linear-gradient({mode_line} 1px, transparent 1px), linear-gradient(90deg, {mode_line} 1px, transparent 1px); background-size: 46px 46px; mask-image: linear-gradient(to bottom, black, transparent 60%); }}
-.block-container {{ max-width: 1320px; padding-top: .5rem; }}
-.navbar {{ border: 0; border-bottom: 1px solid {mode_line}; border-radius: 0; margin-bottom: 72px; padding: 15px 0; background: transparent; box-shadow: none; backdrop-filter: none; }}
-.brand {{ color: {mode_ink}; font-size: 1.02rem; }} .brand small {{ color: {mode_muted}; }}
-.logo {{ border-radius: 4px; border: 1px solid {mode_ink}; background: {mode_accent}; color: #fff; box-shadow: none; }}
-.navlinks a {{ color: {mode_muted}; }} .navlinks a:hover {{ color: {mode_ink}; }}
-.navcta, .primary-link {{ border-radius: 5px; background: {mode_accent}; color: #fff !important; box-shadow: 3px 3px 0 {mode_ink}; }}
-.hero {{ padding: 0 0 76px; }} .hero:after {{ background: {mode_ink}; opacity:.3; }}
-.eyebrow {{ color: {mode_teal}; border: 0; border-radius: 0; padding: 0; background: transparent; font-weight:800; }} .eyebrow i {{ background: {mode_accent}; box-shadow:none; }}
-.hero h1 {{ max-width: 780px; color: {mode_ink}; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(3.5rem, 8vw, 8rem); line-height: .88; letter-spacing: -.085em; }}
-.gradient-text {{ background: none; color: {mode_accent}; }} .hero p {{ color: {mode_muted}; max-width: 490px; }}
-.secondary-link {{ color: {mode_ink}; }} .secondary-link:after {{ color: {mode_accent}; }}
-.scroll-cue {{ color: {mode_muted}; }} .scroll-cue span {{ border-color: {mode_ink}; }} .scroll-cue span:after {{ background: {mode_accent}; }}
-.visual-wrap {{ min-height: 500px; }} .visual-wrap:before {{ width: 315px; height: 315px; background: {mode_accent}; opacity:.20; box-shadow:none; filter:blur(22px); }} .visual-wrap:after {{ background:{mode_teal}; opacity:.18; box-shadow:none; filter:blur(25px); }}
-.risk-card {{ width:min(100%, 410px); border: 0; border-radius: 6px; background: {mode_surface}; color:{mode_ink}; box-shadow: 12px 12px 0 {mode_accent}; animation:floatCard 5s ease-in-out infinite; }}
-.risk-card:after {{ display:none; }} .card-top {{ color:{mode_muted}; }} .risk-number {{ color:{mode_ink}; font-family:Georgia,serif; }} .risk-label {{ color:{mode_accent}; }} .risk-line {{ background:linear-gradient(90deg,{mode_teal},{mode_accent}); }}
-.signal-row {{ color:{mode_muted}; }} .signal-row b {{ color:{mode_ink}; }} .signal-bar {{ background:{mode_surface_2}; }} .signal-bar span {{ background:{mode_teal}; }} .confidence {{ border-color:{mode_line}; color:{mode_muted}; }} .confidence strong {{ color:{mode_teal}; }}
-.float-chip {{ border:1px solid {mode_line}; border-radius:4px; background:{mode_surface}; color:{mode_ink}; box-shadow:4px 4px 0 {mode_ink}; }}
-.stats {{ border:1px solid {mode_line}; border-radius:0; background:{mode_line}; }} .stat {{ background:{mode_surface}; }} .stat strong {{ color:{mode_ink}; font-family:Georgia,serif; }} .stat span {{ color:{mode_muted}; }}
-.marquee {{ border-color:{mode_line}; background:{mode_surface_2}; }} .marquee-item {{ color:{mode_muted}; }} .marquee-item b {{ color:{mode_accent}; }}
-.section {{ padding-top:125px; }} .section:before {{ background:{mode_line}; }} .section-kicker {{ color:{mode_accent}; }} .section h2 {{ color:{mode_ink}; font-family:Georgia,serif; font-size:clamp(2.5rem,5vw,5rem); }} .section-lead {{ color:{mode_muted}; }}
-.panel {{ border:1px solid {mode_line}; border-radius:5px; background:{mode_surface}; box-shadow:5px 5px 0 {mode_line}; }} .panel:hover {{ transform:translateY(-5px); border-color:{mode_accent}; box-shadow:7px 7px 0 {mode_accent}; }} .panel h3 {{ color:{mode_ink}; }} .panel p {{ color:{mode_muted}; }} .icon-box {{ border-radius:4px; border-color:{mode_line}; color:{mode_accent}; background:{mode_surface_2}; }}
-.flow-step {{ border-radius:4px; border-color:{mode_line}; background:{mode_surface}; }} .flow-step b {{ color:{mode_ink}; }} .flow-step span, .flow-arrow {{ color:{mode_accent}; }}
-.model-stat {{ border-radius:4px; border-color:{mode_line}; background:{mode_surface}; }} .model-stat small {{ color:{mode_muted}; }} .model-stat strong {{ color:{mode_ink}; }} .footer {{ border-color:{mode_line}; color:{mode_muted}; }}
-.stButton > button {{ border-radius:4px; border:1px solid {mode_ink}; background:{mode_surface}; color:{mode_ink}; box-shadow:2px 2px 0 {mode_ink}; font-weight:800; }}
+/* Cinematic lightweight AI SaaS treatment */
+.stApp {{ background:{mode_bg}; color:{mode_ink}; font-family:'Manrope',sans-serif; overflow-x:hidden; }}
+.stApp:before {{ opacity:.18; background-image:linear-gradient({mode_line} 1px,transparent 1px),linear-gradient(90deg,{mode_line} 1px,transparent 1px); background-size:72px 72px; mask-image:linear-gradient(to bottom,black,transparent 72%); }}
+.block-container {{ max-width:1240px; padding-top:1.2rem; }}
+.navbar {{ position:sticky; top:12px; z-index:10; border:1px solid {mode_line}; border-radius:18px; margin-bottom:70px; padding:12px 16px; background:{mode_surface}; backdrop-filter:blur(20px); box-shadow:0 16px 48px rgba(0,0,0,.22); }}
+.brand {{ color:{mode_ink}; }} .brand small {{ color:{mode_muted}; }} .logo {{ border:1px solid {mode_accent}; background:linear-gradient(145deg,rgba(157,122,255,.25),rgba(89,217,255,.12)); color:{mode_ink}; box-shadow:0 0 24px rgba(157,122,255,.22); }}
+.navlinks a {{ color:{mode_muted}; }} .navlinks a:hover {{ color:{mode_ink}; }} .navcta,.primary-link {{ color:#080911 !important; border-radius:999px; background:linear-gradient(100deg,#b8a2ff,#68dcff); box-shadow:0 8px 28px rgba(112,157,255,.25); }}
+.hero {{ padding:18px 0 72px; }} .hero h1 {{ max-width:750px; color:{mode_ink}; font-size:clamp(3.3rem,7vw,6.7rem); line-height:.96; letter-spacing:-.075em; font-weight:800; }} .gradient-text {{ background:linear-gradient(100deg,{mode_ink} 10%,{mode_accent} 56%,{mode_cyan} 100%); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:180% auto; animation:gradientMove 5s ease-in-out infinite; }} .hero p {{ color:{mode_muted}; }} .secondary-link {{ color:{mode_ink}; }} .secondary-link:after {{ color:{mode_accent}; }}
+.visual-wrap {{ min-height:500px; }} .visual-wrap:before {{ width:250px; height:250px; background:rgba(124,87,255,.17); box-shadow:0 0 100px 50px rgba(124,87,255,.12); animation:drift 6s ease-in-out infinite; }} .visual-wrap:after {{ background:rgba(44,215,255,.16); box-shadow:0 0 80px 28px rgba(44,215,255,.12); animation:drift 7s 1s ease-in-out infinite reverse; }}
+.risk-card {{ border:1px solid rgba(255,255,255,.15); border-radius:24px; background:linear-gradient(145deg,rgba(25,28,46,.88),rgba(10,12,23,.78)); box-shadow:0 28px 80px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.1); animation:floatCard 5s ease-in-out infinite; }} .risk-card:after {{ display:block; }} .risk-number {{ color:{mode_ink}; }} .risk-label {{ color:{mode_pink}; }} .risk-line {{ background:linear-gradient(90deg,{mode_cyan},{mode_accent},{mode_pink}); }} .signal-row {{ color:{mode_muted}; }} .signal-row b {{ color:{mode_ink}; }} .confidence {{ border-color:{mode_line}; color:{mode_muted}; }} .confidence strong {{ color:#7bffca; }} .float-chip {{ border:1px solid rgba(255,255,255,.13); border-radius:14px; background:rgba(22,25,42,.85); color:#c8cde0; box-shadow:0 15px 30px rgba(0,0,0,.25); }}
+.stats {{ border-color:{mode_line}; background:{mode_line}; }} .stat {{ background:{mode_surface}; }} .stat strong {{ color:{mode_ink}; }} .stat span {{ color:{mode_muted}; }} .marquee {{ border-color:{mode_line}; background:{mode_surface_2}; }} .marquee-item {{ color:{mode_muted}; }} .marquee-item b {{ color:{mode_accent}; }}
+.section {{ padding:112px 0 20px; }} .section:before {{ background:linear-gradient(90deg,transparent,{mode_line},transparent); }} .section-kicker {{ color:{mode_accent}; }} .section h2 {{ color:{mode_ink}; font-size:clamp(2.25rem,4vw,4rem); }} .section-lead {{ color:{mode_muted}; }}
+.panel {{ border:1px solid {mode_line}; border-radius:20px; background:linear-gradient(145deg,rgba(20,23,39,.77),rgba(10,12,22,.64)); box-shadow:inset 0 1px rgba(255,255,255,.05); }} .panel:hover {{ border-color:rgba(157,122,255,.42); box-shadow:0 18px 45px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.1); }} .panel h3 {{ color:{mode_ink}; }} .panel p {{ color:{mode_muted}; }} .icon-box {{ border-color:rgba(157,122,255,.25); color:{mode_accent}; background:rgba(157,122,255,.1); }} .flow-step {{ border-color:{mode_line}; background:{mode_surface}; }} .flow-step b {{ color:{mode_ink}; }} .flow-step span,.flow-arrow {{ color:{mode_accent}; }} .model-stat {{ border-color:{mode_line}; background:{mode_surface}; }} .model-stat small {{ color:{mode_muted}; }} .model-stat strong {{ color:{mode_ink}; }} .footer {{ border-color:{mode_line}; color:{mode_muted}; }}
+.stButton > button {{ border-radius:999px; border:1px solid rgba(157,122,255,.35); background:linear-gradient(100deg,#b8a2ff,#68dcff); color:#080911; box-shadow:0 8px 28px rgba(112,157,255,.2); font-weight:800; }}
+.intro-overlay {{ position:fixed; inset:0; z-index:999; pointer-events:none; background:#070912; animation:introExit 1.8s cubic-bezier(.76,0,.24,1) forwards; }} .intro-mark {{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); color:#fff; text-align:center; font:800 1.1rem Manrope,sans-serif; letter-spacing:.12em; animation:introMark 1.15s ease forwards; }} .intro-mark small {{ display:block; margin-top:10px; color:#9d7aff; font:500 .6rem 'DM Mono',monospace; letter-spacing:.2em; }} .intro-line {{ position:absolute; left:10%; right:10%; top:54%; height:1px; background:linear-gradient(90deg,transparent,#59d9ff,#9d7aff,#ff71c8,transparent); transform:scaleX(0); transform-origin:left; animation:introLine 1s .2s ease forwards; box-shadow:0 0 18px #59d9ff; }}
+.orbit {{ position:absolute; border:1px solid rgba(157,122,255,.28); border-radius:50%; transform:rotate(-18deg); pointer-events:none; }} .orbit-a {{ width:455px; height:170px; animation:orbitSpin 12s linear infinite; }} .orbit-b {{ width:520px; height:245px; border-color:rgba(89,217,255,.2); transform:rotate(32deg); animation:orbitSpin 16s linear infinite reverse; }} .orbit:after {{ content:''; position:absolute; width:7px; height:7px; top:14%; left:18%; border-radius:50%; background:#59d9ff; box-shadow:0 0 16px #59d9ff; }}
+.data-transition {{ position:relative; min-height:210px; margin:45px 0 20px; padding:32px; overflow:hidden; border:1px solid {mode_line}; border-radius:24px; background:{mode_surface}; }} .data-transition h3 {{ margin:0; color:{mode_ink}; font-size:1.05rem; }} .data-transition p {{ margin:6px 0 22px; color:{mode_muted}; font-size:.78rem; }} .data-dots {{ display:flex; flex-wrap:wrap; gap:12px; max-width:760px; }} .data-dots i {{ width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,#59d9ff,#9d7aff); box-shadow:0 0 10px rgba(89,217,255,.55); animation:dotPop 2.8s ease-in-out infinite alternate; }} .data-dots i:nth-child(3n) {{ animation-delay:.7s; }} .data-dots i:nth-child(4n) {{ animation-delay:1.1s; }} .data-count {{ position:absolute; right:32px; top:50%; transform:translateY(-50%); color:{mode_ink}; font-size:3rem; font-weight:800; letter-spacing:-.08em; }} .data-count span {{ display:block; color:{mode_muted}; font:500 .62rem 'DM Mono',monospace; letter-spacing:.1em; text-align:right; }}
+@keyframes gradientMove {{ 0%,100% {{ background-position:0 50%; }} 50% {{ background-position:100% 50%; }} }} @keyframes introLine {{ to {{ transform:scaleX(1); }} }} @keyframes introMark {{ from {{ opacity:0; transform:translate(-50%,-35%); }} to {{ opacity:1; transform:translate(-50%,-50%); }} }} @keyframes introExit {{ 0%,72% {{ opacity:1; }} 100% {{ opacity:0; visibility:hidden; }} }} @keyframes orbitSpin {{ from {{ transform:rotate(-18deg) rotate(0deg); }} to {{ transform:rotate(-18deg) rotate(360deg); }} }} @keyframes dotPop {{ from {{ opacity:.25; transform:scale(.7); }} to {{ opacity:1; transform:scale(1.3); }} }}
 </style>
 """,
     unsafe_allow_html=True,
@@ -207,6 +199,7 @@ def anchor(href: str, label: str, cls: str = "") -> str:
 # -----------------------------
 # Navigation + hero
 # -----------------------------
+st.markdown('<div class="intro-overlay"><div class="intro-line"></div><div class="intro-mark">STAYPREDICT AI<small>HOTEL INTELLIGENCE / 01</small></div></div>', unsafe_allow_html=True)
 st.markdown(
     f"""
 <nav class="navbar">
@@ -215,7 +208,7 @@ st.markdown(
     <span>StayPredict<small>HOTEL INTELLIGENCE, BEFORE CHECK-IN.</small></span>
   </a>
   <div class="navlinks">
-    {anchor('#home','Home')}{anchor('#how-it-works','How it works')}{anchor('#insights','Insights')}{anchor('#model','Model')}{anchor('#about','About')}
+    {anchor('#home','Home')}{anchor('#insights','Intelligence')}{anchor('#how-it-works','How it works')}{anchor('#model','Model')}{anchor('#predictor','Predictor')}
     {anchor('#predictor','Launch predictor →','navcta')}
   </div>
 </nav>
@@ -231,8 +224,8 @@ hero_left, hero_right = st.columns([1.06, 0.94], gap="large")
 with hero_left:
     st.markdown(
         """
-<h1>Predict cancellations.<br><span class="gradient-text">Protect every booking.</span></h1>
-<p>Turn reservation data into actionable cancellation risk — before an empty room becomes lost revenue.</p>
+<h1>Predict cancellations.<br><span class="gradient-text">Before they happen.</span></h1>
+<p>StayPredict AI analyzes hotel reservation patterns and estimates cancellation risk before check-in — turning booking data into actionable intelligence.</p>
 <div class="hero-actions"><a class="primary-link" href="#predictor">Start predicting&nbsp; →</a><a class="secondary-link" href="#insights">Explore the intelligence</a></div>
 <div class="scroll-cue"><span></span>SCROLL TO EXPLORE</div>
 """,
@@ -242,6 +235,7 @@ with hero_right:
     st.markdown(
         """
 <div class="visual-wrap">
+  <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
   <div class="float-chip chip-one">↗ SIGNAL DETECTED&nbsp;&nbsp; 12.8ms</div>
   <div class="float-chip chip-two">✦ MODEL CONFIDENCE&nbsp;&nbsp; 91.2%</div>
   <div class="risk-card">
@@ -273,6 +267,8 @@ st.markdown(
 """,
     unsafe_allow_html=True,
 )
+
+st.markdown('''<div class="data-transition"><h3>ONE RESERVATION <span style="color:#9d7aff">→</span> THOUSANDS OF RESERVATIONS</h3><p>From a single booking signal to a living map of hotel intelligence.</p><div class="data-dots">''' + ''.join('<i></i>' for _ in range(58)) + '''</div><div class="data-count">36K+<span>BOOKINGS ANALYZED</span></div></div>''', unsafe_allow_html=True)
 
 # -----------------------------
 # Story sections
